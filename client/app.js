@@ -3,6 +3,7 @@ import axios from 'axios'
 import {Navbar} from './components'
 import Routes from './routes'
 import CharactersData from './data/characters.json'
+import DropDownFrom from './components/dropdown-form'
 
 class App extends Component {
   constructor(){
@@ -23,47 +24,38 @@ class App extends Component {
     })
 
     let characterArray = await Promise.all(characterArrayPromises)
-    characterArray = characterArray.filter(character=>!!character.data===true)
+    characterArray = characterArray.filter(character=>!!character.data === true)
 
-    // characterArray.map(character => character.data)
-    for(let i = 0; i < characterArray.length; i++) {
-      console.log('character',characterArray[i])
-      for (let j = 0; j < characterArray[i].data.films.length; j++) {
-        let filmObj = await axios.get(characterArray[i].data.films[j])
-        console.log('filmObj',filmObj)
-      }
-    }
-      // return (character.films.map(async film => {
-      //   const {data} = await axios.get(film)
-      //   console.log('data',data)
-      //   return data
-      // }))
+    characterArray = characterArray.map(character => character.data)
+
+    // for(let i = 0; i < characterArray.length; i++) {
+    //   for (let j = 0; j < characterArray[i].films.length; j++) {
+    //     try{
+    //       let filmObj = await axios.get(characterArray[i].films[j])
+    //       .catch(err => err)
+
+    //       characterArray[i].films[j] = filmObj.data
+
+    //   } catch (err){
+    //     return null
+    //   }
+
+    //   }
+    // }
 
     this.setState({
       characters: characterArray
     })
-
-    //  console.log('charactersdata',state)
-    // try{
-    //   await data.films.map(async film => {
-    //     const filmObject = await axios.get(film)
-    //     // console.log('filmObj',filmObject.data)
-    //     return filmObject.data
-    //   })
-    //   console.log('data',data.films)
-    // } catch (err){
-    //   console.error(err)
-    // }
   }
 
   render() {
 
-    console.log('state',this.state.characters)
+    console.log('state',this.state)
 
     return (
       <div>
-        <Navbar />
         <Routes />
+        <DropDownFrom characters={this.state.characters} />
       </div>
     )
   }
