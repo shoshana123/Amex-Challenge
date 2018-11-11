@@ -2,9 +2,11 @@ import React from 'react'
 import MovieRow from './movieRow'
 
 export default (props) => {
-  const {movieData} = props
+  const {movieData, currentCharacter} = props
   console.log('movieData',movieData)
   return (
+    <div>
+    <h1>Film Details For {currentCharacter}</h1>
     <table className='table'>
       <tbody>
         <tr>
@@ -16,6 +18,6 @@ export default (props) => {
         {movieData.map((movie,index)=> <MovieRow key={index} movie={movie} />)}
       </tbody>
     </table>
-
+  </div>
   )
 }

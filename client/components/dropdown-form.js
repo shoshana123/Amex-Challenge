@@ -1,13 +1,16 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import MovieList from './movieList'
+// import LoadingBar from './LoadingBar'
+// import LoadingBarImage from './LoadingBarImage'
 
 export default class DropDownForm extends Component {
   constructor(props){
     super()
     this.state= {
       selectedCharacter: '',
-      filmsData: []
+      filmsData: [],
+      currentCharacterForFilms: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -16,10 +19,10 @@ export default class DropDownForm extends Component {
     this.setState({
       selectedCharacter: event.target.value
     })
-    console.log('stateCheck!',this.state)
   }
   async handleSubmit(event) {
     event.preventDefault()
+    const currentCharacterForFilms=this.state.selectedCharacter
     const selectedCharacterData = this.props.characters.filter(character=>character.name===this.state.selectedCharacter)[0]
     let selectedCharacterFilmsArrayPromises = selectedCharacterData.films.map(film => {
       try {
@@ -31,18 +34,16 @@ export default class DropDownForm extends Component {
     })
     let filmsData = await Promise.all(selectedCharacterFilmsArrayPromises)
     filmsData = filmsData.map(film=>film.data)
-    console.log('FILS',filmsData)
     if(this.state.filmsData.length) this.setState({
       filmsData:[]
     })
     this.setState({
-      filmsData
+      filmsData,
+      currentCharacterForFilms
     })
     this.setState({
       selectedCharacter: ''
     })
-
-    // console.log('TEST',filmsData)
   }
   render() {
 
@@ -54,7 +55,7 @@ return (
     <div>
 
     <label>
-      Pick Your Favorite Star Wars Character:
+      Select Your Favorite Star Wars Character:
       </label>
     </div>
       <div>
@@ -76,7 +77,11 @@ return (
 
     </div>
     <div id='movieTable'>
-    <MovieList movieData={this.state.filmsData} />
+
+    {!this.state.filmsData.length ? <h1>Loading...</h1> :
+    <MovieList movieData={this.state.filmsData} currentCharacter={this.state.currentCharacterForFilms}/>
+    }
+
     </div>
     </div>
 )
