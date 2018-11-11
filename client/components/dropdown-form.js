@@ -49,10 +49,17 @@ export default class DropDownForm extends Component {
 
 const {characters} = this.props
 return (
+    <div id='container'>
+    <div id='selectCharacterForm'>
     <div>
-    <form onSubmit={this.handleSubmit}>
+
     <label>
       Pick Your Favorite Star Wars Character:
+      </label>
+    </div>
+      <div>
+    <form onSubmit={this.handleSubmit}>
+
     <select value={this.state.selectedCharacter} onChange={this.handleChange}>
       <option value='--'>--</option>
       {characters.map((character, index) => {
@@ -61,11 +68,16 @@ return (
         )
       })}
     </select>
-    </label>
-    <input type="submit" value="Submit" />
+    <div>
+    <input className="btn btn-primary" type="submit" value="Submit" />
+    </div>
     </form>
-    {console.log('CHECk',this.state.filmsData)}
+    </div>
+
+    </div>
+    <div id='movieTable'>
     <MovieList movieData={this.state.filmsData} />
+    </div>
     </div>
 )
 }

@@ -3,8 +3,9 @@ import MovieRow from './movieRow'
 
 export default (props) => {
   const {movieData} = props
+  console.log('movieData',movieData)
   return (
-    <table>
+    <table className='table'>
       <tbody>
         <tr>
           <th>Title</th>
