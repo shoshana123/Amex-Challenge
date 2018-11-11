@@ -24,14 +24,21 @@ form div {
 .table-bordered{
   width: 75%;
 }
+html{
+  height: 100%;
+  background-color: black;
+}
 
 #container{
   display: flex;
   flex-direction: column;
+  font-family: 'Codystar', cursive;
+  color: white;
+  background-color: black;
 }
 #movieTable{
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 }
 #selectCharacterForm {
   display: flex;
@@ -52,4 +59,8 @@ form div {
   height: 100%;
   border-radius: inherit;
   transition: width .2s ease-in
+}
+
+th{
+  font-weight: bold;
 }

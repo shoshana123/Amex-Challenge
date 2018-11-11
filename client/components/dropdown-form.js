@@ -54,14 +54,16 @@ return (
     <div id='selectCharacterForm'>
     <div>
 
+      <h1>
     <label>
       Select Your Favorite Star Wars Character:
       </label>
+      </h1>
     </div>
       <div>
     <form onSubmit={this.handleSubmit}>
 
-    <select value={this.state.selectedCharacter} onChange={this.handleChange}>
+    <select class="form-control" data-style="btn-info" data-live-search="true" value={this.state.selectedCharacter} onChange={this.handleChange}>
       <option value='--'>--</option>
       {characters.map((character, index) => {
         return (
