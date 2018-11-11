@@ -3,7 +3,6 @@ import MovieRow from './movieRow'
 
 export default (props) => {
   const {movieData} = props
-  // console.log('movie',movieData)
   return (
     <table>
       <tbody>

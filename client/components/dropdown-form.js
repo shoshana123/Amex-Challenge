@@ -20,11 +20,7 @@ export default class DropDownForm extends Component {
   }
   async handleSubmit(event) {
     event.preventDefault()
-    this.setState({
-      filmsData: []
-    })
     const selectedCharacterData = this.props.characters.filter(character=>character.name===this.state.selectedCharacter)[0]
-    console.log('test',selectedCharacterData)
     let selectedCharacterFilmsArrayPromises = selectedCharacterData.films.map(film => {
       try {
         return axios.get(film)
@@ -36,6 +32,9 @@ export default class DropDownForm extends Component {
     let filmsData = await Promise.all(selectedCharacterFilmsArrayPromises)
     filmsData = filmsData.map(film=>film.data)
     console.log('FILS',filmsData)
+    if(this.state.filmsData.length) this.setState({
+      filmsData:[]
+    })
     this.setState({
       filmsData
     })
@@ -65,6 +64,7 @@ return (
     </label>
     <input type="submit" value="Submit" />
     </form>
+    {console.log('CHECk',this.state.filmsData)}
     <MovieList movieData={this.state.filmsData} />
     </div>
 )

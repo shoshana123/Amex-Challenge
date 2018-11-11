@@ -1,10 +1,10 @@
 import React from 'react'
 
 export default (props) => {
-  const {movie} = props
+  const {movie, index} = props
 
   return (
-    <tr>
+    <tr key={index}>
       <td>{movie.title}</td>
       <td>{movie.director}</td>
       <td>{movie.producer}</td>
