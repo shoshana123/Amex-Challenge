@@ -63,7 +63,7 @@ return (
       <div>
     <form onSubmit={this.handleSubmit}>
 
-    <select class="form-control" data-style="btn-info" data-live-search="true" value={this.state.selectedCharacter} onChange={this.handleChange}>
+    <select className="form-control" data-style="btn-info" value={this.state.selectedCharacter} onChange={this.handleChange}>
       <option value='--'>--</option>
       {characters.map((character, index) => {
         return (

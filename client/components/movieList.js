@@ -10,10 +10,10 @@ export default (props) => {
     <table className='table'>
       <tbody>
         <tr>
-          <th>Title</th>
-          <th>Director(s)</th>
-          <th>Producer(s)</th>
-          <th>Release Date</th>
+          <th id='movieListTitle'>Title</th>
+          <th id='movieListDirector'>Director(s)</th>
+          <th id='movieListProducer'>Producer(s)</th>
+          <th id='movieListReleaseDate'>Release Date</th>
         </tr>
         {movieData.map((movie,index)=> <MovieRow key={index} movie={movie} />)}
       </tbody>

@@ -61,6 +61,19 @@ html{
   transition: width .2s ease-in
 }
 
-th{
+#movieListHeaders{
   font-weight: bold;
+}
+
+#movieListTitle{
+  color: green;
+}
+#movieListDirector{
+  color: turquoise;
+}
+#movieListProducer{
+  color: purple
+}
+#movieListReleaseDate{
+  color: red;
 }
