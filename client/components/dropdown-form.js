@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import MovieList from './movieList'
-// import LoadingBar from './LoadingBar'
-// import LoadingBarImage from './LoadingBarImage'
 
 export default class DropDownForm extends Component {
   constructor(props){

@@ -3,8 +3,8 @@ import MovieRow from './movieRow'
 
 export default (props) => {
   const {movieData, currentCharacter} = props
-  console.log('movieData',movieData)
-  return (
+  if(!movieData.length) return (<div id='loaderContainer'><div className='loader'></div></div>)
+  else return(
     <div>
     <h1>Film Details For {currentCharacter}</h1>
     <table className='table'>
