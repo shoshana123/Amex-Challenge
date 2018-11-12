@@ -24,4 +24,4 @@ deploy:
   provider: heroku
   app: amex-star-wars-challenge # see README
   # api_key:
-  #   secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+    secure: 46f41ff3-206c-4b9f-a930-897dcd0ab838 # see README
