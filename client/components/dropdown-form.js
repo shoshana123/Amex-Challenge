@@ -80,7 +80,7 @@ return (
     </div>
     <div id='movieTable'>
 
-    {!this.state.filmsData.length ? <h1>Loading...</h1> :
+    {!this.state.filmsData.length ? '' :
     <MovieList movieData={this.state.filmsData} currentCharacter={this.state.currentCharacterForFilms}/>
     }
 

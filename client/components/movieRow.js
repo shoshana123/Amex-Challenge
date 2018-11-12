@@ -14,8 +14,8 @@ export default (props) => {
 }
 
 
-function formatDate (movieData) {
-  let monthConverter = {
+function formatDate (releaseDate) {
+  const monthConverter = {
     '01' : 'January',
     '02' : 'February',
     '03' : 'March',
@@ -29,6 +29,16 @@ function formatDate (movieData) {
     '11' : 'November',
     '12' : 'December'
   }
-  const movieDataArray = movieData.split('-')
-  return `${monthConverter[movieDataArray[1]]} ${movieDataArray[2]}, ${movieDataArray[0]}`
+  const dayConverter = {
+    '0' : 'Sunday',
+    '1' :'Monday',
+    '2' :'Tuesday',
+    '3' : 'Wednesday',
+    '4' : 'Thursday',
+    '5' : 'Friday',
+    '6' : 'Saturday'
+  }
+  const dayOfWeek = dayConverter[new Date(releaseDate).getUTCDay()]
+  const releaseDateArray = releaseDate.split('-')
+  return `${dayOfWeek}, ${monthConverter[releaseDateArray[1]]} ${releaseDateArray[2]}, ${releaseDateArray[0]}`
 }
