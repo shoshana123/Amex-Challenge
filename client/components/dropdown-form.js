@@ -51,7 +51,7 @@ return (
     <div id='container'>
     <div id='selectCharacterForm'>
     <div>
-      <h1>Test</h1>
+      <h1>Tests</h1>
       <h1>
     <label>
       Select Your Favorite Star Wars Character:
