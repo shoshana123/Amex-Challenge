@@ -167,7 +167,6 @@ function (_Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // console.log('characters',Characters.characters)
                 characterArrayPromises = _characters.default.characters.map(function (character) {
                   try {
                     return _axios.default.get(character.url).catch(function (err) {
@@ -294,7 +293,8 @@ function (_Component) {
     _this.state = {
       selectedCharacter: '',
       filmsData: [],
-      currentCharacterForFilms: ''
+      currentCharacterForFilms: '',
+      axiosRequest: false
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -322,6 +322,9 @@ function (_Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 event.preventDefault();
+                this.setState({
+                  axiosRequest: true
+                });
                 currentCharacterForFilms = this.state.selectedCharacter;
                 selectedCharacterData = this.props.characters.filter(function (character) {
                   return character.name === _this2.state.selectedCharacter;
@@ -335,10 +338,10 @@ function (_Component) {
                     return null;
                   }
                 });
-                _context.next = 6;
+                _context.next = 7;
                 return Promise.all(selectedCharacterFilmsArrayPromises);
 
-              case 6:
+              case 7:
                 filmsData = _context.sent;
                 filmsData = filmsData.map(function (film) {
                   return film.data;
@@ -348,13 +351,14 @@ function (_Component) {
                 });
                 this.setState({
                   filmsData: filmsData,
-                  currentCharacterForFilms: currentCharacterForFilms
+                  currentCharacterForFilms: currentCharacterForFilms,
+                  axiosRequest: false
                 });
                 this.setState({
                   selectedCharacter: ''
                 });
 
-              case 11:
+              case 12:
               case "end":
                 return _context.stop();
             }
@@ -374,7 +378,7 @@ function (_Component) {
         id: "container"
       }, _react.default.createElement("div", {
         id: "selectCharacterForm"
-      }, _react.default.createElement("div", null, _react.default.createElement("h1", null, "Testing"), _react.default.createElement("h1", null, _react.default.createElement("label", null, "Select Your Favorite Star Wars Character:"))), _react.default.createElement("div", null, _react.default.createElement("form", {
+      }, _react.default.createElement("div", null, _react.default.createElement("h1", null, _react.default.createElement("label", null, "Select Your Favorite Star Wars Character:"))), _react.default.createElement("div", null, _react.default.createElement("form", {
         onSubmit: this.handleSubmit
       }, _react.default.createElement("select", {
         className: "form-control",
@@ -394,7 +398,11 @@ function (_Component) {
         value: "Submit"
       }))))), _react.default.createElement("div", {
         id: "movieTable"
-      }, !this.state.filmsData.length ? '' : _react.default.createElement(_movieList.default, {
+      }, this.state.axiosRequest ? _react.default.createElement("div", {
+        id: "loaderContainer"
+      }, _react.default.createElement("div", {
+        className: "loader"
+      })) : _react.default.createElement(_movieList.default, {
         movieData: this.state.filmsData,
         currentCharacter: this.state.currentCharacterForFilms
       })));
@@ -458,11 +466,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = function _default(props) {
   var movieData = props.movieData,
       currentCharacter = props.currentCharacter;
-  if (!movieData.length) return _react.default.createElement("div", {
-    id: "loaderContainer"
-  }, _react.default.createElement("div", {
-    className: "loader"
-  }));else return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Film Details For ", currentCharacter), _react.default.createElement("table", {
+  if (!movieData.length) return '';else return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Film Details For ", currentCharacter), _react.default.createElement("table", {
     className: "table"
   }, _react.default.createElement("tbody", null, _react.default.createElement("tr", null, _react.default.createElement("th", {
     id: "movieListTitle"

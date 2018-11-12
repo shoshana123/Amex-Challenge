@@ -9,6 +9,7 @@ export default class DropDownForm extends Component {
       selectedCharacter: '',
       filmsData: [],
       currentCharacterForFilms: '',
+      axiosRequest: false,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -20,6 +21,9 @@ export default class DropDownForm extends Component {
   }
   async handleSubmit(event) {
     event.preventDefault()
+    this.setState({
+      axiosRequest: true
+    })
     const currentCharacterForFilms=this.state.selectedCharacter
     const selectedCharacterData = this.props.characters.filter(character=>character.name===this.state.selectedCharacter)[0]
     let selectedCharacterFilmsArrayPromises = selectedCharacterData.films.map(film => {
@@ -37,7 +41,8 @@ export default class DropDownForm extends Component {
     })
     this.setState({
       filmsData,
-      currentCharacterForFilms
+      currentCharacterForFilms,
+      axiosRequest: false
     })
     this.setState({
       selectedCharacter: ''
@@ -51,7 +56,6 @@ return (
     <div id='container'>
     <div id='selectCharacterForm'>
     <div>
-      <h1>Tests</h1>
       <h1>
     <label>
       Select Your Favorite Star Wars Character:
@@ -77,13 +81,11 @@ return (
 
     </div>
     <div id='movieTable'>
-
-    {!this.state.filmsData.length ? '' :
+    {this.state.axiosRequest ? <div id='loaderContainer'><div className='loader'></div></div> :
     <MovieList movieData={this.state.filmsData} currentCharacter={this.state.currentCharacterForFilms}/>
-    }
-
-    </div>
-    </div>
+  }
+  </div>
+  </div>
 )
 }
 }

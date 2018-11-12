@@ -13,10 +13,9 @@ class App extends Component {
     }
   }
   async componentDidMount() {
-    // console.log('characters',Characters.characters)
     let characterArrayPromises = CharactersData.characters.map(character => {
       try{
-        return axios.get(character.url).catch(err=>err)
+        return axios.get(character.url).catch(err=> err)
       } catch (err){
         return null
       }
