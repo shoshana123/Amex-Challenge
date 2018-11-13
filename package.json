@@ -1,7 +1,7 @@
 {
-  "name": "boilermaker",
+  "name": "American-Express",
   "version": "1.0.0",
-  "description": "American Express Coding Challenge",
+  "description": "American Express Star Wars Coding Challenge",
   "engines": {
     "node": ">= 7.0.0"
   },

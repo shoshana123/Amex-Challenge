@@ -163,6 +163,7 @@ function (_Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                // fetch the characters data
                 characterArrayPromises = _characters.default.characters.map(function (character) {
                   try {
                     return _axios.default.get(character.url).catch(function (err) {
@@ -177,9 +178,11 @@ function (_Component) {
 
               case 3:
                 characterArray = _context.sent;
+                // filter out any errors
                 characterArray = characterArray.filter(function (character) {
                   return !!character.data === true;
-                });
+                }); // set the state with the data
+
                 characterArray = characterArray.map(function (character) {
                   return character.data;
                 });
@@ -277,7 +280,7 @@ function (_Component) {
     _this.state = {
       selectedCharacter: '',
       filmsData: [],
-      currentCharacterForFilms: '',
+      characterNameForFilmsHeader: '',
       axiosRequest: false
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -288,6 +291,7 @@ function (_Component) {
   _createClass(DropDownForm, [{
     key: "handleChange",
     value: function handleChange(event) {
+      // set the state with the selected character from the dropdown
       this.setState({
         selectedCharacter: event.target.value
       });
@@ -300,16 +304,16 @@ function (_Component) {
       regeneratorRuntime.mark(function _callee(event) {
         var _this2 = this;
 
-        var currentCharacterForFilms, selectedCharacterData, selectedCharacterFilmsArrayPromises, filmsData;
+        var selectedCharacterData, selectedCharacterFilmsArrayPromises, filmsData;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                event.preventDefault();
+                event.preventDefault(); // make axios request and set the state accordingly for the condition for the loading bar
+
                 this.setState({
                   axiosRequest: true
                 });
-                currentCharacterForFilms = this.state.selectedCharacter;
                 selectedCharacterData = this.props.characters.filter(function (character) {
                   return character.name === _this2.state.selectedCharacter;
                 })[0];
@@ -322,27 +326,26 @@ function (_Component) {
                     return null;
                   }
                 });
-                _context.next = 7;
+                _context.next = 6;
                 return Promise.all(selectedCharacterFilmsArrayPromises);
 
-              case 7:
+              case 6:
                 filmsData = _context.sent;
                 filmsData = filmsData.map(function (film) {
                   return film.data;
                 });
                 if (this.state.filmsData.length) this.setState({
                   filmsData: []
-                });
+                }); // set the state with the data and set axios request to false to stop the loading bar
+                // to avoid the character name currently rendered in "Film Details for ${characterName}' header changing prior to loading new data update the characterNameForFilmsHeader
+
                 this.setState({
                   filmsData: filmsData,
-                  currentCharacterForFilms: currentCharacterForFilms,
+                  characterNameForFilmsHeader: this.state.selectedCharacter,
                   axiosRequest: false
                 });
-                this.setState({
-                  selectedCharacter: ''
-                });
 
-              case 12:
+              case 10:
               case "end":
                 return _context.stop();
             }
@@ -388,7 +391,7 @@ function (_Component) {
         className: "loader"
       })) : _react.default.createElement(_movieList.default, {
         movieData: this.state.filmsData,
-        currentCharacter: this.state.currentCharacterForFilms
+        currentCharacter: this.state.characterNameForFilmsHeader
       })));
     }
   }]);
@@ -440,31 +443,7 @@ var _default = function _default(props) {
       movie: movie
     });
   }))));
-}; // function sortTable() {
-//   let table, rows, switching, i, x, y, shouldSwitch;
-//   // check which table to sort
-//   table = document.getElementById('table')
-//   switching = true;
-//   while (switching) {
-//     switching = false;
-//     rows = table.rows;
-//     // loop through all the rows
-//     for(let i  = 0; i < rows.length -1; i++){
-//       shouldSwitch = false;
-//       // Get the 2 elements to compare between row1 and row2 (quantity or percent for holdings and account type tables respectively)
-//       let j = tableType === 'accountType' ? 2 : 4
-//       let row1 = rows[i].getElementsByTagName("td")[j];
-//       let row2 = rows[i + 1].getElementsByTagName("td")[j];
-//       // Check if the two rows should switch place:
-//       if (tableType==='accountType' && +row1.innerHTML.slice(0,-1) < +row2.innerHTML.slice(0,-1) || tableType==='holdings' && +row1.innerHTML < +row2.innerHTML) {
-//         // If so switch:
-//           rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-//           switching = true;
-//       }
-//     }
-//   }
-// }
-
+};
 
 exports.default = _default;
 

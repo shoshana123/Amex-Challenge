@@ -2,7 +2,6 @@ import React from 'react'
 
 export default (props) => {
   const {movie, index} = props
-
   return (
     <tr key={index}>
       <td>{movie.title}</td>
@@ -31,8 +30,8 @@ function formatDate (releaseDate) {
   }
   const dayConverter = {
     '0' : 'Sunday',
-    '1' :'Monday',
-    '2' :'Tuesday',
+    '1' : 'Monday',
+    '2' : 'Tuesday',
     '3' : 'Wednesday',
     '4' : 'Thursday',
     '5' : 'Friday',

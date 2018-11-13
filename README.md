@@ -5,6 +5,6 @@ For this challenge, I made axios requests to the json file provided to get the d
 To run this locally:
 
 1. npm install
-  - Requires at least Node version 7
+  - Requires at least Node version 7.0
 2. npm run start-dev
 
