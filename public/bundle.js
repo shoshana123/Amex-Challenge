@@ -374,10 +374,10 @@ function (_Component) {
         onChange: this.handleChange
       }, _react.default.createElement("option", {
         value: "--"
-      }, "--"), characters.map(function (character, index) {
+      }, "--"), characters.map(function (character) {
         return _react.default.createElement("option", {
           value: character.name,
-          key: index
+          key: character.name
         }, character.name);
       })), _react.default.createElement("div", null, _react.default.createElement("input", {
         className: "btn btn-primary",
@@ -429,7 +429,7 @@ var _default = function _default(props) {
       currentCharacter = props.currentCharacter;
   if (!movieData.length) return '';else return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Film Details For ", currentCharacter), _react.default.createElement("table", {
     className: "table"
-  }, _react.default.createElement("tbody", null, _react.default.createElement("tr", null, _react.default.createElement("th", {
+  }, _react.default.createElement("thead", null, _react.default.createElement("tr", null, _react.default.createElement("th", {
     id: "movieListTitle"
   }, "Title"), _react.default.createElement("th", {
     id: "movieListDirector"
@@ -437,7 +437,7 @@ var _default = function _default(props) {
     id: "movieListProducer"
   }, "Producer(s)"), _react.default.createElement("th", {
     id: "movieListReleaseDate"
-  }, "Release Date")), movieData.map(function (movie) {
+  }, "Release Date"))), _react.default.createElement("tbody", null, movieData.map(function (movie) {
     return _react.default.createElement(_movieRow.default, {
       key: movie.episode_id,
       movie: movie

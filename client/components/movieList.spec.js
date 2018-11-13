@@ -13,14 +13,10 @@ describe('MovieList', () => {
       "title": "The Empire Strikes Back",
       "director": "Irvin Kershner",
       "producer": "Gary Kurtz, Rick McCallum",
-      "release_date": "1980-05-17"
-    },
-    {
-      "title": "Revenge of the Sith",
-      "director": "George Lucas",
-      "producer": "Rick McCallum",
-      "release_date": "2005-05-19"
-    }]
+      "release_date": "1980-05-17",
+      "episode_id" : '12313'
+    }
+  ]
   let currentCharacter = 'R2-D2'
   let movieList
 

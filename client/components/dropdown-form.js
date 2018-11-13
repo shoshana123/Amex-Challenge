@@ -67,9 +67,9 @@ export default class DropDownForm extends Component {
              <form onSubmit={this.handleSubmit}>
               <select className="form-control" data-style="btn-info" value={this.state.selectedCharacter} onChange={this.handleChange}>
                 <option value='--'>--</option>
-                {characters.map((character, index) => {
+                {characters.map((character) => {
                   return (
-                      <option value={character.name} key={index} >{character.name}</option>
+                      <option value={character.name} key={character.name} >{character.name}</option>
                   )
                 })}
               </select>
