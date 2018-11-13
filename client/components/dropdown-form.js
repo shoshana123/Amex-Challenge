@@ -55,7 +55,6 @@ export default class DropDownForm extends Component {
 
   render() {
     const {characters} = this.props
-
     return (
         <div id='container'>
           <div id='selectCharacterForm'>
