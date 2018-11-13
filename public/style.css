@@ -1,30 +1,13 @@
-body {
-  font-family: sans-serif;
-}
-
-a {
-  text-decoration: none;
-}
-
-label {
-  display: block;
-}
-
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
 form div {
   margin: 1em;
   display: inline-block;
   width: 150px;
 }
 
-
 .table-bordered{
   width: 75%;
 }
+
 html{
   height: 100%;
   background-color: black;
@@ -37,10 +20,12 @@ html{
   color: white;
   background-color: black;
 }
+
 #movieTable{
   display: flex;
   flex-direction: column;
 }
+
 #selectCharacterForm {
   display: flex;
   flex-direction: column;
@@ -80,8 +65,8 @@ html{
 }
 
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid turquoise; /* Blue */
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid turquoise;
   border-radius: 50%;
   width: 120px;
   height: 120px;
