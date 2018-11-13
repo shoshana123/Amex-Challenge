@@ -1,9 +1,9 @@
 import React from 'react'
 
 export default (props) => {
-  const {movie, index} = props
+  const {movie} = props
   return (
-    <tr key={index}>
+    <tr>
       <td>{movie.title}</td>
       <td>{movie.director}</td>
       <td>{movie.producer}</td>

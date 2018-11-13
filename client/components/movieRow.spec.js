@@ -15,10 +15,10 @@ describe('MovieRow', () => {
       "release_date": "1980-05-17"
   }
   let movieRow
-  let index = 0
+  let episodeId = 0
 
   beforeEach(() => {
-    movieRow = shallow(<MovieRow key={index} movie={movie}/>)
+    movieRow = shallow(<MovieRow key={episodeId} movie={movie}/>)
   })
 
   it('renders the four different row elements', () => {

@@ -437,9 +437,9 @@ var _default = function _default(props) {
     id: "movieListProducer"
   }, "Producer(s)"), _react.default.createElement("th", {
     id: "movieListReleaseDate"
-  }, "Release Date")), movieData.map(function (movie, index) {
+  }, "Release Date")), movieData.map(function (movie) {
     return _react.default.createElement(_movieRow.default, {
-      key: index,
+      key: movie.episode_id,
       movie: movie
     });
   }))));
@@ -469,11 +469,8 @@ var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_mod
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = function _default(props) {
-  var movie = props.movie,
-      index = props.index;
-  return _react.default.createElement("tr", {
-    key: index
-  }, _react.default.createElement("td", null, movie.title), _react.default.createElement("td", null, movie.director), _react.default.createElement("td", null, movie.producer), _react.default.createElement("td", null, formatDate(movie.release_date)));
+  var movie = props.movie;
+  return _react.default.createElement("tr", null, _react.default.createElement("td", null, movie.title), _react.default.createElement("td", null, movie.director), _react.default.createElement("td", null, movie.producer), _react.default.createElement("td", null, formatDate(movie.release_date)));
 };
 
 exports.default = _default;

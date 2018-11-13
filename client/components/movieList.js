@@ -15,7 +15,7 @@ export default (props) => {
             <th id='movieListProducer'>Producer(s)</th>
             <th id='movieListReleaseDate'>Release Date</th>
           </tr>
-          {movieData.map((movie,index)=> <MovieRow key={index} movie={movie} />)}
+          {movieData.map((movie)=> <MovieRow key={movie.episode_id} movie={movie} />)}
         </tbody>
       </table>
   </div>
