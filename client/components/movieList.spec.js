@@ -14,7 +14,7 @@ describe('MovieList', () => {
       "director": "Irvin Kershner",
       "producer": "Gary Kurtz, Rick McCallum",
       "release_date": "1980-05-17",
-      "episode_id" : '12313'
+      "episode_id" : '123134'
     }
   ]
   let currentCharacter = 'R2-D2'
