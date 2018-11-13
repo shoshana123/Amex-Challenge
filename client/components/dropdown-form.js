@@ -49,43 +49,41 @@ export default class DropDownForm extends Component {
     })
   }
   render() {
+    const {characters} = this.props
+    return (
+        <div id='container'>
+        <div id='selectCharacterForm'>
+        <div>
+          <h1>
+        <label>
+          Select Your Favorite Star Wars Character:
+          </label>
+          </h1>
+        </div>
+          <div>
+        <form onSubmit={this.handleSubmit}>
 
+        <select className="form-control" data-style="btn-info" value={this.state.selectedCharacter} onChange={this.handleChange}>
+          <option value='--'>--</option>
+          {characters.map((character, index) => {
+            return (
+                <option value={character.name} key={index} >{character.name}</option>
+            )
+          })}
+        </select>
+        <div>
+        <input className="btn btn-primary" type="submit" value="Submit" />
+        </div>
+        </form>
+        </div>
 
-const {characters} = this.props
-return (
-    <div id='container'>
-    <div id='selectCharacterForm'>
-    <div>
-      <h1>
-    <label>
-      Select Your Favorite Star Wars Character:
-      </label>
-      </h1>
-    </div>
-      <div>
-    <form onSubmit={this.handleSubmit}>
-
-    <select className="form-control" data-style="btn-info" value={this.state.selectedCharacter} onChange={this.handleChange}>
-      <option value='--'>--</option>
-      {characters.map((character, index) => {
-        return (
-            <option value={character.name} key={index} >{character.name}</option>
-        )
-      })}
-    </select>
-    <div>
-    <input className="btn btn-primary" type="submit" value="Submit" />
-    </div>
-    </form>
-    </div>
-
-    </div>
-    <div id='movieTable'>
-    {this.state.axiosRequest ? <div id='loaderContainer'><div className='loader'></div></div> :
-    <MovieList movieData={this.state.filmsData} currentCharacter={this.state.currentCharacterForFilms}/>
-  }
-  </div>
-  </div>
+        </div>
+        <div id='movieTable'>
+        {this.state.axiosRequest ? <div id='loaderContainer'><div className='loader'></div></div> :
+        <MovieList movieData={this.state.filmsData} currentCharacter={this.state.currentCharacterForFilms}/>
+      }
+      </div>
+      </div>
 )
 }
 }
