@@ -45,7 +45,7 @@ export default class DropDownForm extends Component {
     })
 
     // set the state with the data and set axios request to false to stop the loading bar
-    // to avoid the character name currently rendered in "Film Details for ${characterName}' header changing prior to loading new data update the characterNameForFilmsHeader
+    // to avoid the character name currently rendered in "Film Details for ${characterName}' header changing prior to loading new data, update the characterNameForFilmsHeader
     this.setState({
       filmsData,
       characterNameForFilmsHeader: this.state.selectedCharacter,

@@ -23,9 +23,11 @@ describe('MovieList', () => {
   beforeEach(() => {
     movieList = shallow(<MovieList movieData={fakeData} currentCharacter={currentCharacter} />)
   })
+
   it('renders the film table header with the character name in an h1', () => {
     expect(movieList.find('h1').text()).to.be.equal('Film Details For R2-D2')
   })
+
   it('renders four column headers', () => {
     expect(movieList.find('th').length).to.be.equal(4)
   })

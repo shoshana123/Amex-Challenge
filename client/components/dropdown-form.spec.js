@@ -22,9 +22,11 @@ describe('DropDown Form', () => {
   beforeEach(() => {
     DropDown = shallow(<DropDownForm characters={fakeData} />)
   })
+
   it('renders the select form', () => {
     expect(DropDown.find('select').length).to.be.equal(1)
   })
+
   it('renders all of the character options including the initial blank option', () => {
     expect(DropDown.find('option').length).to.be.equal(3)
   })

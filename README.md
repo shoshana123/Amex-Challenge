@@ -8,3 +8,9 @@ To run this locally:
   - Requires at least Node version 7.0
 2. npm run start-dev
 
+
+To run tests:
+1. npm test
+
+Thank you for your consideration.
+

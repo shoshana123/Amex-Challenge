@@ -30,6 +30,7 @@ describe('MovieRow', () => {
   })
 
   it ('renders the correctly formatted release date', () => {
-    expect(movieRow.find('td').getElements()[3].props.children).to.be.equal('Saturday, May 17, 1980')})
+    expect(movieRow.find('td').getElements()[3].props.children).to.be.equal('Saturday, May 17, 1980')
+  })
 
   })
